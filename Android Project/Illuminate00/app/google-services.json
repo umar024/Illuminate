@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "922555917408",
+    "firebase_url": "https://illuminate-79e12.firebaseio.com",
+    "project_id": "illuminate-79e12",
+    "storage_bucket": "illuminate-79e12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922555917408:android:d733521d259987770bcf05",
+        "android_client_info": {
+          "package_name": "com.example.illuminate00"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "922555917408-1u55evgvj4jjutul5eftoh8mk6u8spjn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.illuminate00",
+            "certificate_hash": "6b57c70869aeff0c5dd7e321ea701f5c6e3ad3ee"
+          }
+        },
+        {
+          "client_id": "922555917408-4thk296fsqde8dpa4dhpo2tk5k40bsr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBquNZE2ep04GcJUAPnRtNiQTYvAALHjm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "922555917408-4thk296fsqde8dpa4dhpo2tk5k40bsr4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
