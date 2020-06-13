@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuHome"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/menuMyInstalledApps"
+        android:icon="@drawable/ic_myinstalledapps"
+        android:title="@string/my_installed_apps"/>
+
+    <item
+        android:id="@+id/menuSettings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings"/>
+
+    <item
+        android:id="@+id/menuSetPermissions"
+        android:icon="@drawable/ic_setpermissions"
+        android:title="@string/set_permissions"/>
+
+
+    <item
+        android:id="@+id/menuBookmarks"
+        android:icon="@drawable/ic_bookmark"
+        android:title="@string/bookmarks"/>
+
+    <item
+        android:id="@+id/menuAboutus"
+        android:icon="@drawable/ic_aboutus"
+        android:title="@string/about_us"/>
+
+
+</menu>

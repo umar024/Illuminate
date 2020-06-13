@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/menuHome">
+
+    <fragment
+        android:id="@+id/menuHome"
+        android:name="com.example.illuminate04.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/menuMyInstalledApps"
+        android:name="com.example.illuminate04.MyInstalledAppsFragment"
+        android:label="My Installed Apps"
+        tools:layout="@layout/fragment_my_installed_apps" />
+    <fragment
+        android:id="@+id/menuSettings"
+        android:name="com.example.illuminate04.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/menuSetPermissions"
+        android:name="com.example.illuminate04.SetPermissionsFragment"
+        android:label="Set Permissions"
+        tools:layout="@layout/fragment_set_permissions" />
+    <fragment
+        android:id="@+id/menuBookmarks"
+        android:name="com.example.illuminate04.BookmarksFragment"
+        android:label="Bookmarks"
+        tools:layout="@layout/fragment_bookmarks" />
+    <fragment
+        android:id="@+id/menuAboutus"
+        android:name="com.example.illuminate04.AboutUsFragment"
+        android:label="About Us"
+        tools:layout="@layout/fragment_about_us" />
+</navigation>
