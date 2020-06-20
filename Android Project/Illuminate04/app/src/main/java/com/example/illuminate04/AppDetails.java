@@ -41,13 +41,14 @@ public class AppDetails extends AppCompatActivity {
         setContentView(R.layout.activity_app_details);
         Intent intent = getIntent();
         String id = intent.getStringExtra("appid");
+        Toast.makeText(this, id, Toast.LENGTH_LONG).show();
         appicon = findViewById(R.id.appicon);
         apptitle = findViewById(R.id.Title);
         headericon = findViewById(R.id.headerimage);
         description = findViewById(R.id.Descriptiondetails);
 
 
-        //Toast.makeText(this, id, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, id, Toast.LENGTH_LONG).show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 url + "?appid=" + id,
@@ -64,21 +65,14 @@ public class AppDetails extends AppCompatActivity {
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject o = array.getJSONObject(i);
                                 items item;
-                                Log.i("a;fsdk", o.getString("title"));
+                                //Log.i("a;fsdk", o.getString("title"));
 
-                                item = new items(
-                                        o.getString("icon"),
-                                        o.getInt("id"),
-                                        o.getString("title"),
-                                        o.getString("description"),
-                                        o.getInt("reviews"),
-                                        o.getString("score")
-                                );
-                                Picasso.get().load(item.getImage()).into(appicon);
+                                Picasso.get().load(o.getString("icon")).into(appicon);
                                 Picasso.get().load(o.getString("headerImage")).into(headericon);
                                 description.setText(o.getString("description"));
                                 apptitle.setText(o.getString("title"));
 
+                                Log.e(o.getString("title"),o.getString("description"));
                             }
 
 

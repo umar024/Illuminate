@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<group android:checkableBehavior="single">
+    <item
+        android:id="@+id/menuHome"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/menuMyInstalledApps"
+        android:title="Highest Rated Apps"/>
+
+    <item
+        android:id="@+id/menuSettings"
+        android:title="By Highest Downloads"/>
+
+    <item
+        android:id="@+id/menuSetPermissions"
+        android:title="Score: High-Low"/>
+
+
+    <item
+        android:id="@+id/menuBookmarks"
+        android:title="@string/bookmarks"/>
+
+    <item
+        android:id="@+id/menuAboutus"
+        android:title="@string/about_us"/>
+</group>
+
+</menu>

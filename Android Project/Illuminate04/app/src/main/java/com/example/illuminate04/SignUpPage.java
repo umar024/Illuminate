@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -30,11 +31,17 @@ public class SignUpPage extends AppCompatActivity {
     private Button btnSignup;
     private static final String Register_URL = "https://nasfistsolutions.com/illuminate/connection.php";
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor myEdit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_page);
+
+        sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        myEdit = sharedPreferences.edit();
 
         //getSupportActionBar().hide();
         backbutton = findViewById(R.id.backbtn);
@@ -75,7 +82,7 @@ public class SignUpPage extends AppCompatActivity {
         register(username, password, email);
     }
 
-    public void register(String username, String password, String email){
+    public void register(final String username, final String password, String email){
         String urlsuffix = "?username="+username+"&password="+password+"&email="+email+"&action=signup";
 
 
@@ -93,6 +100,9 @@ public class SignUpPage extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),s, Toast.LENGTH_SHORT).show();
                 loading.cancel();
                 if(s.equals("Sign Up Successful!")){
+                    myEdit.putString("username", username);
+                    myEdit.putString("password", password);
+                    myEdit.commit();
                     startActivity(new Intent(SignUpPage.this, Home.class));
                 }
             }

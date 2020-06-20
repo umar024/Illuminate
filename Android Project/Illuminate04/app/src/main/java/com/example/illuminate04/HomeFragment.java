@@ -14,9 +14,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
+import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -35,6 +41,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -53,7 +61,9 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
     itemAdapter adapter;
     List<items> itemsList;
     int getreq;
-    View view;
+    public View view;
+    TextView sortbutton, categoriesbutton;
+    SearchView searchView;
 
 
     @Override
@@ -66,15 +76,62 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         itemsList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.recyclerview);
-        recyclerView.setHasFixedSize(true);
+        searchView = view.findViewById(R.id.searchview);
+        searchView.clearFocus();
+        sortbutton = view.findViewById(R.id.sortbutton);
+        categoriesbutton = view.findViewById(R.id.categoriesbutton);
 
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         getreq = 1;
         loadRecyclerViewData();
+
+
+        sortbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("Sort:","sorted clickdsafadsfsda");
+                PopupMenu popup = new PopupMenu(view.getContext(), v);
+                MenuInflater inflater = popup.getMenuInflater();
+                inflater.inflate(R.menu.sortmenu, popup.getMenu());
+                popup.show();
+
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Collections.sort(itemsList, new Comparator<items>() {
+                            public int compare(items v1, items v2) {
+                                return v1.getAppname().compareTo(v2.getAppname());
+                            }
+                        });
+                        adapter = new itemAdapter(view.getContext(), itemsList, HomeFragment.this);
+                        recyclerView.setAdapter(adapter);
+                        return true;
+                    }
+                });
+            }
+        });
+
+        categoriesbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("categories","clicked catgegoeis");
+            }
+        });
+
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+    void showpopup(){
+
     }
 
     public void loadRecyclerViewData() {
@@ -141,3 +198,5 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
         startActivity(intent);
     }
 }
+
+

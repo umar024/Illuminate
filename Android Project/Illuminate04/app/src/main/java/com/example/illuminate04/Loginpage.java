@@ -1,7 +1,9 @@
 package com.example.illuminate04;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +32,9 @@ public class Loginpage extends AppCompatActivity {
     private EditText passwordview ;
     private Button btnLogin;
     private static final String Register_URL = "https://nasfistsolutions.com/illuminate/connection.php";
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor myEdit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,9 @@ public class Loginpage extends AppCompatActivity {
         register = findViewById(R.id.register);
         usernameview = findViewById(R.id.username);
         passwordview = findViewById(R.id.password);
+        sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        myEdit = sharedPreferences.edit();
+
 
         // mAPIService = ApiUtils.getAPIService();
 
@@ -73,8 +81,8 @@ public class Loginpage extends AppCompatActivity {
         return usernameindb;
     }
     public void loginuser() {
-        String username = usernameview.getText().toString().trim().toLowerCase();
-        String password = passwordview.getText().toString().trim().toLowerCase();
+        final String username = usernameview.getText().toString().trim().toLowerCase();
+        final String password = passwordview.getText().toString().trim().toLowerCase();
         usernameindb = username;
 
         String urlsuffix = "?username="+username+"&password="+password+"&action=login";
@@ -93,6 +101,11 @@ public class Loginpage extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),s, Toast.LENGTH_SHORT).show();
                 loading.cancel();
                 if(s.equals("login successful")){
+
+
+                    myEdit.putString("username", username);
+                    myEdit.putString("password", password);
+                    myEdit.commit();
                     startActivity(new Intent(Loginpage.this, Home.class));
                 }
             }

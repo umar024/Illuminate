@@ -5,11 +5,16 @@
     android:layout_height="match_parent"
     tools:context=".MyInstalledAppsFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/my_installed_apps"
-        android:layout_gravity="center"
-        android:textSize="20sp"/>
+    <view
+        android:id="@+id/recyclerview"
+        class="androidx.recyclerview.widget.RecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="3dp"
+        android:paddingTop="5dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-26dp">
+
+    </view>
 
 </FrameLayout>
