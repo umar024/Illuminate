@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect('localhost','nasfistsolutions_illuminate','nas0301248','nasfistsolutions_illuminate');
+$conn = mysqli_connect('localhost','username','password','db');
 
 
 if($_GET['request']==1)
