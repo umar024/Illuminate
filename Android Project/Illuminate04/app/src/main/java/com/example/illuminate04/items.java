@@ -1,6 +1,5 @@
 package com.example.illuminate04;
 
-import android.graphics.drawable.Drawable;
 
 public class items {
     private String image;

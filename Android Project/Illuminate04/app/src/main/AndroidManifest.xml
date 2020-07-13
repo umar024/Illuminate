@@ -15,9 +15,10 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AppDetails"></activity>
         <activity android:name=".Home" />
+
         <activity android:name=".Loginpage" />
         <activity android:name=".SignUpPage" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -15,7 +15,7 @@ import java.util.List;
 public class InstalledItemAdapter extends RecyclerView.Adapter<InstalledItemAdapter.itemVeiwHolder> {
 
     private Context mCtx;
-    private List<installeditem> itemsList;
+    List<installeditem> itemsList;
 
 
     public InstalledItemAdapter(Context mCtx, List<installeditem> itemsList) {
@@ -42,7 +42,6 @@ public class InstalledItemAdapter extends RecyclerView.Adapter<InstalledItemAdap
         holder.textViewreInstalledOn.setText(item.getInstalledOn());
 
         holder.imageView.setImageDrawable(item.getImage());
-
 
     }
 

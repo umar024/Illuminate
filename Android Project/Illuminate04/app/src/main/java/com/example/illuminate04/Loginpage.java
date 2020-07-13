@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -34,12 +41,14 @@ public class Loginpage extends AppCompatActivity {
     private static final String Register_URL = "https://nasfistsolutions.com/illuminate/connection.php";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor myEdit;
+    private FirebaseAuth mAuth;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginpage);
+        mAuth = FirebaseAuth.getInstance();
         // getSupportActionBar().hide();
 
         btnLogin = findViewById(R.id.btnLogin);
@@ -63,24 +72,72 @@ public class Loginpage extends AppCompatActivity {
         backbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                finish();
+                startActivity(new Intent(Loginpage.this, MainActivity.class));
             }
         });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginuser();
+                loginuserfirebase();
             }
         });
 
+    }
+
+    private void killActivity(){
+        finish();
     }
 
 
     public String getUsernameindb(){
         return usernameindb;
     }
-    public void loginuser() {
+
+    public void loginuserfirebase(){
+        final String email = usernameview.getText().toString().trim().toLowerCase();
+        final String password = passwordview.getText().toString().trim().toLowerCase();
+
+        if(email.isEmpty()){
+            usernameview.setError("Email is required!");
+            usernameview.requestFocus();
+            return;
+        }
+        if(password.isEmpty()){
+            passwordview.setError("Password is required!");
+            passwordview.requestFocus();
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            usernameview.setError("Enter a valid email");
+            usernameview.requestFocus();
+            return;
+        }
+        if(password.length()<6){
+            passwordview.setError("Password is too short!");
+            passwordview.requestFocus();
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(getApplicationContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
+                    myEdit.putString("username", email);
+                    myEdit.putString("password", password);
+                    myEdit.commit();
+                    startActivity(new Intent(Loginpage.this, Home.class));
+                    finish();
+                    //startActivity(intent);
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"Authentication failed",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+    /*public void loginuser() {
         final String username = usernameview.getText().toString().trim().toLowerCase();
         final String password = passwordview.getText().toString().trim().toLowerCase();
         usernameindb = username;
@@ -107,6 +164,7 @@ public class Loginpage extends AppCompatActivity {
                     myEdit.putString("password", password);
                     myEdit.commit();
                     startActivity(new Intent(Loginpage.this, Home.class));
+                    killActivity();
                 }
             }
 
@@ -129,5 +187,5 @@ public class Loginpage extends AppCompatActivity {
         }
         RegisterUser ur = new RegisterUser();
         ur.execute(urlsuffix);
-    }
+    }*/
 }

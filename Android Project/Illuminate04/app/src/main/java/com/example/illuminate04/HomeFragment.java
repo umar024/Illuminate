@@ -75,6 +75,7 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
         return view;
     }
 
+
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -197,6 +198,7 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
         intent.putExtra("appid", ""+itemsList.get(position).getId());
         startActivity(intent);
     }
+
 }
 
 

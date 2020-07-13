@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <PreferenceCategory android:title="Manage Notifications">
+
+        <SwitchPreference
+            android:key="notifications"
+            android:title="Notifications"
+            android:summary="Enable or Disable Notifications"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Manage Permissions">
+
+        <Preference
+            android:key="editpermissions"
+            android:title="Edit Permissions"
+            android:summary="Edit Permissions to Get Different Suggestions"/>
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Manage Profile">
+
+        <Preference
+            android:key="editprofile"
+            android:title="Edit Profile"
+            android:summary="Tap to Edit your Profile"/>
+
+    </PreferenceCategory>
+        <Preference
+            android:key="Logout"
+            android:title="Logout"
+            android:summary="Tap to log out of application"/>
+
+</PreferenceScreen>

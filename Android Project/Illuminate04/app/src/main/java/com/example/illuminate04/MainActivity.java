@@ -12,13 +12,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button loginbutton;
     private TextView register;
-
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -28,14 +30,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mAuth = FirebaseAuth.getInstance();
+
         SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-        UName = sh.getString("username", "n/a");
-        pass = sh.getString("password", "n/a");
+        UName = sh.getString("username", "");
+        pass = sh.getString("password", "");
 
         if (UName != null && !UName.equals("") && pass != null && !pass.equals("")) {
             startActivity(new Intent(MainActivity.this, Home.class));
-        } else {
-
         }
 
 
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, SignUpPage.class));
+                finish();
             }
         });
 
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Loginpage.class));
+                finish();
             }
         });
         //installedapps();

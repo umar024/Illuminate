@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -22,8 +23,8 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class Home extends AppCompatActivity {
 
+public class Home extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,4 +58,6 @@ public class Home extends AppCompatActivity {
         });
 
     }
+
+
 }
