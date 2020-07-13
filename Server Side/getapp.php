@@ -2,7 +2,16 @@
 
 $conn = mysqli_connect('localhost','username','password','db');
 
-$appid = $_GET['appid']; //app id for which data is required
+$appid = $_GET['appid'];
+$userid = $_GET['userid'];
+$isbookmark = false;
+
+$sql0 = "Select * from bookmarks where appid = '$appid' AND userid = '$userid'";
+$result0 = mysqli_query($conn, $sql0);
+if(mysqli_num_rows ( $result0 )>0){
+    $isbookmark = true;
+}
+
 
 
 $sql = "Select * from appsdata where id = '$appid'";
@@ -11,6 +20,7 @@ $result = mysqli_query($conn, $sql);
 $response["details"] = array();
     while($row = mysqli_fetch_array($result)){
         $items = array();
+        $items['isbookmark'] = $isbookmark;
         $items['id'] = $row['id'];
         $items['title'] = $row['title'];
         $items['installs'] = $row['installs'];
@@ -31,6 +41,8 @@ $response["details"] = array();
     } 
 
 
+
+//echo json_encode($response);
 
 
 $sql = "Select * from screenshots where appid = '$appid'";
