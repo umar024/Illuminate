@@ -5,8 +5,8 @@ public class items {
     private String image;
     private int id;
     private String appname;
-    private String rating;
-    private int reviews;
+    private String installs;
+    private String score;
     private String size;
 
     public String getImage() {
@@ -21,24 +21,24 @@ public class items {
         return appname;
     }
 
-    public String getRating() {
-        return rating;
+    public String getInstalls() {
+        return installs;
     }
 
-    public int getReviews() {
-        return reviews;
+    public String getScore() {
+        return score;
     }
 
     public String getSize() {
         return size;
     }
 
-    public items(String image, int id, String appname, String rating, int reviews, String size) {
+    public items(String image, int id, String appname, String installs, String score, String size) {
         this.image = image;
         this.id = id;
         this.appname = appname;
-        this.rating = rating;
-        this.reviews = reviews;
+        this.installs = installs;
+        this.score = score;
         this.size = size;
     }
 }

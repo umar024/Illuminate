@@ -24,18 +24,19 @@
             <TextView
                 android:id="@+id/textViewTitle"
                 android:layout_width="150dp"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@id/imageView"
+                android:paddingTop="10dp"
                 android:fontFamily="@font/bold"
-                android:gravity="center"
-                android:text="Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra)"
+                android:gravity="left"
+                android:text="title"
                 android:textColor="@color/grey"
                 android:textColorLink="@color/red"
                 android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/Downloads"
+                android:id="@+id/Installs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
@@ -46,13 +47,13 @@
                 android:textSize="13dp" />
 
             <TextView
-                android:id="@+id/textViewReview"
+                android:id="@+id/textViewInstalls"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="2dp"
                 android:layout_marginEnd="49dp"
-                android:layout_toRightOf="@id/Downloads"
+                android:layout_toRightOf="@id/Installs"
                 android:fontFamily="@font/bold"
                 android:text="# Reviews Here"
                 android:textColor="@color/grey"
@@ -65,17 +66,17 @@
                 android:layout_margin="2dp"
                 android:layout_toRightOf="@id/textViewTitle"
                 android:drawableLeft="@drawable/ic_ratings"
-                android:layout_below="@id/Downloads"
+                android:layout_below="@id/Installs"
                 android:fontFamily="@font/regular"
                 android:textColor="@color/grey"
                 android:textSize="13dp" />
 
 
             <TextView
-                android:id="@+id/textViewsize"
+                android:id="@+id/textViewScore"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_below="@id/textViewReview"
+                android:layout_below="@id/textViewInstalls"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="2dp"
                 android:layout_marginStart="2dp"
@@ -89,7 +90,7 @@
                 android:textSize="13dp" />
 
             <TextView
-                android:id="@+id/Ratings"
+                android:id="@+id/Size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
@@ -101,17 +102,17 @@
                 android:textSize="13dp" />
 
             <TextView
-                android:id="@+id/textViewRating"
+                android:id="@+id/textViewSize"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_below="@id/textViewsize"
+                android:layout_below="@id/textViewScore"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="2dp"
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="46dp"
                 android:layout_marginBottom="2dp"
-                android:layout_toRightOf="@id/Ratings"
+                android:layout_toRightOf="@id/Size"
                 android:fontFamily="@font/bold"
                 android:text="# Ratingss Here"
                 android:textColor="@color/grey"

@@ -155,14 +155,18 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
                                 JSONObject o = array.getJSONObject(i);
                                 items item;
                                 //Log.i("a;fsdk", o.getString("title"));
-
+                                String size="";
+                                if (!(o.getString("size").equals("Varies")))
+                                    size = o.getString("size")+"B";
+                                else
+                                    size = o.getString("size");
                                 item = new items(
                                         o.getString("icon"),
                                         o.getInt("id"),
                                         o.getString("title"),
-                                        o.getString("rating"),
-                                        o.getInt("reviews"),
-                                        o.getString("score")
+                                        o.getString("installs"),
+                                        o.getString("score").substring(0,3),
+                                        size
                                 );
                                 itemsList.add(item);
                             }

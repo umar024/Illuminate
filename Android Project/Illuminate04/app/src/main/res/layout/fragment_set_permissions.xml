@@ -1,14 +1,477 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SetPermissionsFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/set_permissions"
-        android:layout_gravity="center"
-        android:textSize="20sp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/activitysetPermissions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".SetPermissions">
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <TextView
+                android:id="@+id/Location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/bold"
+                android:paddingLeft="15dp"
+                android:text="Location"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@color/white"
+                    android:paddingLeft="15dp"
+                    android:text="Access Location"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <CheckBox
+                    android:id="@+id/Access_Location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" />
+            </LinearLayout>
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <TextView
+                android:id="@+id/Contacts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/bold"
+                android:paddingLeft="15dp"
+                android:text="Contacts"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints" />
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@color/white"
+                    android:paddingLeft="15dp"
+                    android:text="Read Contacts"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <CheckBox
+                    android:id="@+id/Read_Contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" />
+
+            </LinearLayout>
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@color/white"
+                    android:paddingLeft="15dp"
+                    android:text="Write Contacts"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <CheckBox
+                    android:id="@+id/Write_Contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <TextView
+                android:id="@+id/Messages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/bold"
+                android:paddingLeft="15dp"
+                android:text="Messages"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints" />
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@color/white"
+                    android:paddingLeft="15dp"
+                    android:text="Read Messages"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <CheckBox
+                    android:id="@+id/Read_Messages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@color/white"
+                    android:paddingLeft="15dp"
+                    android:text="Recieve SMS"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <CheckBox
+                    android:id="@+id/Recieve_SMS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@color/white"
+                    android:paddingLeft="15dp"
+                    android:text="Recieve MMS"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <CheckBox
+                    android:id="@+id/Recieve_MMS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <TextView
+                android:id="@+id/Phone_calls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/bold"
+                android:paddingLeft="15dp"
+                android:text="Phone Calls"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints" />
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@color/white"
+                    android:paddingLeft="15dp"
+                    android:text="Read Phone State"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <CheckBox
+                    android:id="@+id/Read_phone_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@color/white"
+                    android:paddingLeft="15dp"
+                    android:text="Intercept Outgoing Calls"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <CheckBox
+                    android:id="@+id/Intercept_Outgoing_calls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@color/white"
+                    android:paddingLeft="15dp"
+                    android:text="Modify Phone State"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <CheckBox
+                    android:id="@+id/Modify_phone_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <TextView
+                android:id="@+id/Camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/bold"
+                android:paddingLeft="15dp"
+                android:text="Camera"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@color/white"
+                    android:paddingLeft="15dp"
+                    android:text="Access Camera"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <CheckBox
+                    android:id="@+id/Access_Camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" />
+            </LinearLayout>
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/bold"
+                android:paddingLeft="15dp"
+                android:text="Record Audio"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@color/white"
+                    android:paddingLeft="15dp"
+                    android:text="Record Audio"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <CheckBox
+                    android:id="@+id/Record_Audio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" />
+            </LinearLayout>
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <TextView
+                android:id="@+id/Calender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/bold"
+                android:paddingLeft="15dp"
+                android:text="Calender"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@color/white"
+                    android:paddingLeft="15dp"
+                    android:text="Read Calender Events"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <CheckBox
+                    android:id="@+id/Read_Calender_Events"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" />
+            </LinearLayout>
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+            <TextView
+                android:id="@+id/Browser_History"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/bold"
+                android:paddingLeft="15dp"
+                android:text="Browser History"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@color/white"
+                    android:paddingLeft="15dp"
+                    android:text="Read Browser History"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <CheckBox
+                    android:id="@+id/Read_Browser_History"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" />
+            </LinearLayout>
+            <!-- - - - - - -  - - - - - - -  - - - - - - -->
+
+
+            <Button
+                android:id="@+id/savebutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save and Continue"
+                android:layout_gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"></Button>
+
+        </LinearLayout>
+
+
+    </ScrollView>
 </FrameLayout>

@@ -41,9 +41,9 @@ public class itemAdapter extends RecyclerView.Adapter<itemAdapter.itemVeiwHolder
         items item = itemsList.get(position);
 
         holder.textViewtitile.setText(item.getAppname());
-        holder.textViewreview.setText(String.valueOf(item.getReviews()));
-        holder.textViewrating.setText(item.getRating());
-        holder.textViewsize.setText(item.getSize());
+        holder.textViewInstalls.setText(item.getInstalls());
+        holder.textViewScore.setText(item.getScore());
+        holder.textViewSize.setText(item.getSize());
         //holder.imageView.setImageDrawable(item.getImage());
         Picasso.get().load(item.getImage()).into(holder.imageView);
 
@@ -60,7 +60,7 @@ public class itemAdapter extends RecyclerView.Adapter<itemAdapter.itemVeiwHolder
     class itemVeiwHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
-        TextView textViewtitile, textViewrating, textViewreview, textViewsize;
+        TextView textViewtitile, textViewInstalls, textViewScore, textViewSize;
         OnAppListener onAppListener;
 
 
@@ -69,9 +69,9 @@ public class itemAdapter extends RecyclerView.Adapter<itemAdapter.itemVeiwHolder
 
             imageView = itemView.findViewById(R.id.imageView);
             textViewtitile = itemView.findViewById(R.id.textViewTitle);
-            textViewrating = itemView.findViewById(R.id.textViewRating);
-            textViewreview = itemView.findViewById(R.id.textViewReview);
-            textViewsize = itemView.findViewById(R.id.textViewsize);
+            textViewInstalls = itemView.findViewById(R.id.textViewInstalls);
+            textViewScore = itemView.findViewById(R.id.textViewScore);
+            textViewSize = itemView.findViewById(R.id.textViewSize);
 
             this.onAppListener = onAppListener;
 

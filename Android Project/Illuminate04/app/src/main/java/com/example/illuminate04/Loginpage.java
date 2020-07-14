@@ -38,7 +38,7 @@ public class Loginpage extends AppCompatActivity {
     private EditText usernameview;
     private EditText passwordview ;
     private Button btnLogin;
-    private static final String Register_URL = "https://nasfistsolutions.com/illuminate/connection.php";
+    private static final String Register_URL = "https://nasfistsolutions.com/illuminate/authentication.php";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor myEdit;
     private FirebaseAuth mAuth;

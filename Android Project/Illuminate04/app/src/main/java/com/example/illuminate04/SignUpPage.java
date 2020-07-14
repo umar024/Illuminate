@@ -38,7 +38,7 @@ public class SignUpPage extends AppCompatActivity {
     private EditText edit_confirmpassword;
     private Button btnSignup;
     private FirebaseAuth mAuth;
-    private static final String Register_URL = "https://nasfistsolutions.com/illuminate/connection.php";
+    private static final String Register_URL = "https://nasfistsolutions.com/illuminate/authentication.php";
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor myEdit;
