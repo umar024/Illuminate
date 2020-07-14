@@ -1,7 +1,7 @@
 <?php
-$conn = mysqli_connect('localhost','username','password','db');
+include('dbconnection.php');
 
-$sql = "Select icon, id, title, ratings, reviews, score from appsdata where category = 1 limit 100";
+$sql = "Select icon, id, title, score, size, installs from appsdata where category = 1 limit 100";
 mysqli_query($conn, "SET title `utf8`");
 
 $result = mysqli_query($conn, $sql);
@@ -13,9 +13,9 @@ if(mysqli_fetch_array($result)>0){
         $items['icon'] = $row['icon'];
         $items['title'] = htmlspecialchars($row['title']);
         $items['id'] = $row['id'];
-        $items['rating'] = $row['ratings'];
-        $items['reviews'] = $row['reviews'];
         $items['score'] = $row['score'];
+        $items['size'] = $row['size'];
+        $items['installs'] = $row['installs'];
         array_push($response["details"], $items);
     }
 }

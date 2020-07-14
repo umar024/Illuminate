@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect('localhost','username','password','db');
+include('dbconnection.php');
 if($_GET['action']=="signup"){
 
     $username = $_GET['username'];

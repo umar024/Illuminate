@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect('localhost','username','password','db');
+include('dbconnection.php');
 
 $appid = $_GET['appid'];
 $userid = $_GET['userid'];
