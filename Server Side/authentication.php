@@ -1,7 +1,46 @@
 <?php
 
 include('dbconnection.php');
-if($_GET['action']=="signup"){
+
+if($_POST['request']=="savedata"){
+    $userid = $_POST['userid'];
+    $totalapps= $_POST['totalapps'];
+    $apps = array();
+    for($i=0;$i<$totalapps;$i++){
+        $apps[$i] = $_POST['appname'.$i];
+    }
+    $sql0 = "SELECT * FROM userinstalledapps WHERE userid = '$userid'";
+    $result0 = mysqli_query($conn, $sql0);
+    if(mysqli_num_rows($result0)!=0){
+        $sqldelete = "DELETE FROM userinstalledapps WHERE userid = '$userid'";
+        $resultdelete = mysqli_query($conn, $sqldelete);
+    }
+    for($i=0;$i<$totalapps;$i++){
+        $appname = "%".$apps[$i]."%";
+        $sql = "SELECT * FROM appsdata WHERE title LIKE '$appname' LIMIT 1";
+        $result = mysqli_query($conn,$sql);
+        if(mysqli_num_rows($result)!=0){
+            while($row = mysqli_fetch_array($result)){
+                $genreid = $row['genreid'];
+                $sql1 = "INSERT into userinstalledapps (id,userid,title,genreid) VALUES ('','$userid','$apps[$i]','$genreid')";
+                $result1 = mysqli_query($conn, $sql1);
+            }
+        }
+    }
+      
+
+    $sql2 = "SELECT * FROM permissions WHERE userid = '$userid'";
+    $result2 = mysqli_query($conn,$sql2);
+    if(mysqli_num_rows($result2)==0){
+        $sql3="INSERT INTO permissions (id,userid,Access_Location,Read_Contacts, Write_Contacts, Read_Messages, Recieve_SMS,Recieve_MMS,Read_phone_state,Intercept_Outgoing_calls,	Modify_phone_state,	Access_Camera,Record_Audio,Read_Calender_Events,Read_Browser_History)
+VALUES ('','$userid','1','1','1','1','1','1','1','1','1','1','1','1','1')";
+        $result3 = mysqli_query($conn,$sql3);
+            
+    }
+    echo "Complete";
+}
+
+else if($_GET['action']=="signup"){
 
     $username = $_GET['username'];
     $password = $_GET['password'];
@@ -38,4 +77,23 @@ if($_GET['action']=="signup"){
         }
     }
 }
+
+ /*	
+id
+userid
+Access_Location
+Read_Contacts
+Write_Contacts
+Read_Messages
+Recieve_SMS
+Recieve_MMS
+Read_phone_state
+Intercept_Outgoing_calls
+Modify_phone_state
+Access_Camera
+Record_Audio
+Read_Calender_Events
+Read_Browser_History*/
+
+
 ?>
