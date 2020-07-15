@@ -87,4 +87,6 @@ public class itemAdapter extends RecyclerView.Adapter<itemAdapter.itemVeiwHolder
     public interface OnAppListener {
         void onAppClick(int position);
     }
+
+
 }

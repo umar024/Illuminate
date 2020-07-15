@@ -2,6 +2,7 @@ package com.example.illuminate04;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -32,6 +33,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,6 +55,8 @@ public class SetPermissionsFragment extends Fragment {
             intercept_Outgoing_calls, modify_phone_state, access_camera, record_audio, read_calender_events, read_browser_history;
     CheckBox Access_Location, Read_Contacts, Write_Contacts, Read_Messages, Recieve_SMS, Recieve_MMS, Read_phone_state,
             Intercept_Outgoing_calls, Modify_phone_state, Access_Camera, Record_Audio, Read_Calender_Events, Read_Browser_History;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor myEdit;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,11 +87,17 @@ public class SetPermissionsFragment extends Fragment {
         Read_Calender_Events = view.findViewById(R.id.Read_Calender_Events);
         Read_Browser_History = view.findViewById(R.id.Read_Browser_History);
 
+        sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        myEdit = sharedPreferences.edit();
+
+
         getpermissionsdata(); //method to get permissions data of user from database
 
         savebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myEdit.putString("mycategory","");
+                myEdit.commit();
                 /*Log.i("check variables:",""+access_location+" "+read_contacts+" "+ write_contacts+" "+ read_messages+" "+
                         recieve_SMS+" "+ recieve_MMS+" "+ read_phone_state+" "+
                         intercept_Outgoing_calls+" "+ modify_phone_state+" "+ access_camera+" "+ record_audio+" "+read_calender_events

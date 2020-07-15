@@ -179,8 +179,8 @@ public class AppDetails extends AppCompatActivity {
                                 apptitle.setText(o.getString("title"));
                                 mypackage = o.getString("package");
                                 installs.setText(o.getString("installs"));
-                                ratings.setText(o.getString("score").substring(0, 4));
-                                size.setText(o.getString("size"));
+                                ratings.setText(o.getString("score").substring(0, 3));
+                                size.setText(o.getString("size")+"B");
                                 version.setText(o.getString("version"));
                                 isbookmark = o.getBoolean("isbookmark");
                                 if(isbookmark){

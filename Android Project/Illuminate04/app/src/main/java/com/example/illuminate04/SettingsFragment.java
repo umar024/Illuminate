@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -20,6 +21,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import static android.content.Context.MODE_PRIVATE;
 
 
@@ -32,6 +35,8 @@ public class SettingsFragment extends Fragment {
     static Context context;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor myEdit;
+    private FirebaseAuth mAuth;
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -82,10 +87,16 @@ public class SettingsFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+    }
+
     public static class MySettingsFragment extends PreferenceFragment {
         public MySettingsFragment() {
         }
-
+        private FirebaseAuth mAuth;
         SettingsFragment sf = new SettingsFragment();
 
         @Override
@@ -93,6 +104,7 @@ public class SettingsFragment extends Fragment {
             super.onCreate(savedInstanceState);
 
             // Load the preferences from an XML resource
+            mAuth = FirebaseAuth.getInstance();
             addPreferencesFromResource(R.xml.preferences);
         }
 
@@ -118,6 +130,7 @@ public class SettingsFragment extends Fragment {
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                                 public void onClick(DialogInterface arg0, int arg1) {
+                                    mAuth.signOut();
                                     sf.clearSP(context);
                                     getActivity().finishAffinity();
                                     startActivity(new Intent(context, MainActivity.class));

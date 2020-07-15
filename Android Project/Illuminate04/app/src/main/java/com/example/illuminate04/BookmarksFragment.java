@@ -74,7 +74,7 @@ public class BookmarksFragment extends Fragment implements itemAdapter.OnAppList
 
     public void loadRecyclerViewData() {
         final ProgressDialog progressDialog = new ProgressDialog(view.getContext());
-        progressDialog.setMessage("updating suggestion list");
+        progressDialog.setMessage("Loading Bookmarks");
         progressDialog.show();
         final String userid = mAuth.getCurrentUser().getUid();
 

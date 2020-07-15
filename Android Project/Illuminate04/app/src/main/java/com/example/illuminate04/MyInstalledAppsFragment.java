@@ -98,7 +98,11 @@ public class MyInstalledAppsFragment extends Fragment {
 
 
                 _item.put("itm", packageInfo.applicationInfo.loadIcon(view.getContext().getPackageManager()));
-                item = new installeditem(packageInfo.applicationInfo.loadIcon(view.getContext().getPackageManager()),names[i],size+"",packageInfo.versionName,format.format(packageInfo.firstInstallTime));
+                item = new installeditem(packageInfo.applicationInfo.loadIcon(view.getContext().getPackageManager()),
+                        names[i],
+                        size+"",
+                        packageInfo.versionName,
+                        format.format(packageInfo.firstInstallTime));
                 itemsList.add(item);
                 i += 1;
             }

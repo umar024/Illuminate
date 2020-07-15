@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/game"
+            android:title="Games" />
+        <item
+            android:id="@+id/menuHome"
+            android:title="Photography" />
+
+        <item
+            android:id="@+id/menuMyInstalledApps"
+            android:title="Music and Audio" />
+
+        <item
+            android:id="@+id/menuSettings"
+            android:title="News and Magazines" />
+
+        <item
+            android:id="@+id/menuSetPermissions"
+            android:title="Books and Reference" />
+
+
+        <item
+            android:id="@+id/menuBookmarks"
+            android:title="Communication" />
+        <item
+            android:id="@+id/social"
+            android:title="Social" />
+
+        <item
+            android:id="@+id/education"
+            android:title="Education" />
+
+
+    </group>
+</menu>
