@@ -328,7 +328,9 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
     }
 
     public void savedata() {
-
+        final ProgressDialog progressDialog = new ProgressDialog(view.getContext());
+        progressDialog.setMessage("updating suggestion list");
+        progressDialog.show();
         int i = 0;
         for (android.content.pm.PackageInfo packageInfo : listn) {
             if (!((packageInfo.applicationInfo.flags & (packageInfo.applicationInfo.FLAG_UPDATED_SYSTEM_APP |
@@ -357,9 +359,13 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
                     @Override
                     public void onResponse(String response) {
                         // response
+                        progressDialog.dismiss();
                         Log.e("Response", response);
                         Toast.makeText(getContext(), "Account data updated successfully", Toast.LENGTH_SHORT).show();
-                        loadRecyclerViewData();
+                        if(sharedPreferences.getString("newuser","").equals("true")){
+                            myEdit.putString("newuser","false");
+                            getmycategory();
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -397,6 +403,12 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray array = jsonObject.getJSONArray("permissions");
+                            if(array.length() == 0 ){
+                                myEdit.putString("newuser","true");
+                                myEdit.putString("updatedata", "done");
+                                myEdit.commit();
+                                savedata();
+                            }
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject o = array.getJSONObject(i);
                                 Log.e("yeh i permissions",o.getString("Access_Location")+o.getString("Access_Camera"));
@@ -413,7 +425,7 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
                                 }
                                 myEdit.putString("mycategory", mycategory);
                                 myEdit.commit();
-                                if (updatedata.equals("")) {
+                                if (sharedPreferences.getString("updatedata","").equals("")) {
                                     myEdit.putString("updatedata", "done");
                                     myEdit.commit();
                                     savedata();
