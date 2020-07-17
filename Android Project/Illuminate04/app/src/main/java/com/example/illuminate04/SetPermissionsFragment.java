@@ -110,7 +110,7 @@ public class SetPermissionsFragment extends Fragment {
                                 // response
                                 Log.d("Response", response);
                                 Toast.makeText(getContext(),"permissions updated",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getActivity(),Home.class));
+                                startActivity(new Intent(getActivity(),MainActivity.class));
                             }
                         },
                         new Response.ErrorListener() {

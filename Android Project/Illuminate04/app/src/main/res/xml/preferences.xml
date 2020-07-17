@@ -12,22 +12,8 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Manage Permissions">
 
-        <Preference
-            android:key="editpermissions"
-            android:title="Edit Permissions"
-            android:summary="Edit Permissions to Get Different Suggestions"/>
 
-    </PreferenceCategory>
-    <PreferenceCategory android:title="Manage Profile">
-
-        <Preference
-            android:key="editprofile"
-            android:title="Edit Profile"
-            android:summary="Tap to Edit your Profile"/>
-
-    </PreferenceCategory>
         <Preference
             android:key="Logout"
             android:title="Logout"

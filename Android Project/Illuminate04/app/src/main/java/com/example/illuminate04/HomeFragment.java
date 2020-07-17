@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -82,6 +83,8 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
     String mycategory = "";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor myEdit;
+    String updatedata = "";
+    String categorysharedpreference="";
 
 
     @Override
@@ -109,29 +112,35 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
         userid = mAuth.getCurrentUser().getUid();
 
         sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref", MODE_PRIVATE);
-        String updatedata = "";
-        String categorysharedpreference="";
+
         myEdit = sharedPreferences.edit();
 
         updatedata = sharedPreferences.getString("updatedata", "");
         categorysharedpreference = sharedPreferences.getString("mycategory","");
-
-        if (updatedata.equals("")) {
-            myEdit.putString("updatedata", "done");
-            myEdit.commit();
-            savedata();
-        }
-        if (categorysharedpreference.equals("")) {
-            getmycategory();
-        }else{
-            mycategory = sharedPreferences.getString("mycategory","");
-        }
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         getreq = "1";
         genreid="";
-        loadRecyclerViewData();
+
+
+        if (categorysharedpreference.equals("")) {
+            getmycategory();
+        }else{
+            mycategory = sharedPreferences.getString("mycategory","");
+            if (updatedata.equals("")) {
+                myEdit.putString("updatedata", "done");
+                myEdit.commit();
+                savedata();
+            }else{
+                loadRecyclerViewData();
+            }
+        }
+
+
+
+
+
+
 
 
         sortbutton.setOnClickListener(new View.OnClickListener() {
@@ -265,7 +274,7 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray array = jsonObject.getJSONArray("details");
-
+                            Log.e("lengtrh",array.length()+"");
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject o = array.getJSONObject(i);
                                 items item;
@@ -350,7 +359,7 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
                         // response
                         Log.e("Response", response);
                         Toast.makeText(getContext(), "Account data updated successfully", Toast.LENGTH_SHORT).show();
-
+                        loadRecyclerViewData();
                     }
                 },
                 new Response.ErrorListener() {
@@ -371,7 +380,6 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
                     params.put("appname" + i, names[i]);
 
                 }
-
 
                 return params;
             }
@@ -405,6 +413,13 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
                                 }
                                 myEdit.putString("mycategory", mycategory);
                                 myEdit.commit();
+                                if (updatedata.equals("")) {
+                                    myEdit.putString("updatedata", "done");
+                                    myEdit.commit();
+                                    savedata();
+                                }else{
+                                    loadRecyclerViewData();
+                                }
                             }
 
                         } catch (Exception e) {
