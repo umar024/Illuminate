@@ -21,7 +21,9 @@ import android.view.ViewGroup;
 
 import java.io.File;
 import java.lang.reflect.Method;
+import java.math.RoundingMode;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -91,7 +93,12 @@ public class MyInstalledAppsFragment extends Fragment {
 
                 file = new File(packageInfo.applicationInfo.publicSourceDir);
 
-                int size = (int) file.length();
+                double size = (int) file.length();
+                size = size/1048576;
+
+
+
+
 
 
                 Log.i(names[i], file.toString());
@@ -100,7 +107,7 @@ public class MyInstalledAppsFragment extends Fragment {
                 _item.put("itm", packageInfo.applicationInfo.loadIcon(view.getContext().getPackageManager()));
                 item = new installeditem(packageInfo.applicationInfo.loadIcon(view.getContext().getPackageManager()),
                         names[i],
-                        size+"",
+                        String.format("%.1f", size)+"MB",
                         packageInfo.versionName,
                         format.format(packageInfo.firstInstallTime));
                 itemsList.add(item);

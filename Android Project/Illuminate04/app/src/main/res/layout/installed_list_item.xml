@@ -45,7 +45,7 @@
                 android:layout_margin="2dp"
                 android:layout_toRightOf="@id/textViewTitle"
                 android:fontFamily="@font/regular"
-                android:text="Score:"
+                android:text="Size:"
                 android:textColor="@color/grey"
                 android:textSize="13dp" />
 
