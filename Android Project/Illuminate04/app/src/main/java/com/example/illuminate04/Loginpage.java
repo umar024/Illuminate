@@ -1,7 +1,9 @@
 package com.example.illuminate04;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -19,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,6 +39,7 @@ public class Loginpage extends AppCompatActivity {
     String usernameindb;
     private ImageView backbutton;
     private TextView register;
+    private TextView forgotpassword;
     private EditText usernameview;
     private EditText passwordview ;
     private Button btnLogin;
@@ -57,6 +61,7 @@ public class Loginpage extends AppCompatActivity {
         register = findViewById(R.id.register);
         usernameview = findViewById(R.id.username);
         passwordview = findViewById(R.id.password);
+        forgotpassword = findViewById(R.id.forgetpassword);
         sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
         myEdit = sharedPreferences.edit();
 
@@ -84,10 +89,61 @@ public class Loginpage extends AppCompatActivity {
             }
         });
 
+        forgotpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isFinishing()){
+                    showdialogue();
+                }
+                final EditText resetmail = new EditText(Loginpage.this);
+                final AlertDialog.Builder passworddialogue = new AlertDialog.Builder(Loginpage.this);
+                passworddialogue.setTitle("Forgot password?");
+                passworddialogue.setMessage("Enter your Email:");
+                passworddialogue.setView(resetmail);
+
+                passworddialogue.setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String mail = resetmail.getText().toString();
+                        if(mail.isEmpty()){
+                            resetmail.setError("Email is required!");
+                            resetmail.requestFocus();
+                            return;
+                        }
+                        if(!Patterns.EMAIL_ADDRESS.matcher(mail).matches()){
+                            resetmail.setError("Enter a valid email");
+                            resetmail.requestFocus();
+                            return;
+                        }
+                        mAuth.sendPasswordResetEmail(mail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(getApplicationContext(), "Reset Link Sent!", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getApplicationContext(), "Could not send Reset Link", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
+                });
+                passworddialogue.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                passworddialogue.show();
+
+            }
+        });
     }
 
-    private void killActivity(){
-        finish();
+    private void showdialogue(){
+
+
     }
 
 

@@ -364,7 +364,12 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
                         Toast.makeText(getContext(), "Account data updated successfully", Toast.LENGTH_SHORT).show();
                         if(sharedPreferences.getString("newuser","").equals("true")){
                             myEdit.putString("newuser","false");
+                            myEdit.commit();
                             getmycategory();
+                        }else{
+                            myEdit.putString("newuser","false");
+                            myEdit.commit();
+                            loadRecyclerViewData();
                         }
                     }
                 },
@@ -395,6 +400,7 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
     }
 
     public void getmycategory() {
+        Log.e("aaya","again in get my category");
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 urlgetpermissions + "?request=1&userid=" + userid,
                 new Response.Listener<String>() {
@@ -430,7 +436,7 @@ public class HomeFragment extends Fragment implements itemAdapter.OnAppListener 
                                     myEdit.commit();
                                     savedata();
                                 }else{
-                                    loadRecyclerViewData();
+                                     loadRecyclerViewData();
                                 }
                             }
 
